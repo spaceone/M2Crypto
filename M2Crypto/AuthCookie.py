@@ -57,7 +57,7 @@ class AuthCookieJar:
             and (c.output() == cookie.output())
 
     def isGoodCookieString(self, cookie_str):
-        c = Cookie.SmartCookie()        
+        c = Cookie.SimpleCookie()        
         c.load(cookie_str)
         if not c.has_key(_TOKEN):
             return 0
@@ -75,7 +75,7 @@ class AuthCookie:
         self._expiry = expiry
         self._data = data
         self._mac = mac
-        self._cookie = Cookie.SmartCookie()
+        self._cookie = Cookie.SimpleCookie()
         self._cookie[_TOKEN] = '%s%s' % (dough, mac)
         self._name = '%s%s' % (dough, mac)  # XXX WebKit only.
 
